@@ -4,52 +4,39 @@ document.getElementById('generate-btn').addEventListener('click', () => {
     const range = parseInt(document.getElementById('range').value);
     const table = document.getElementById('multiplication-table');
   
-    // Validate inputs
-    if (isNaN(number) || isNaN(range) || range <= 0) {
-      alert("Please enter valid numbers for both fields, and range must be greater than 0.");
+    if (isNaN(number) || range <= 0) {
+      alert("Please enter a valid number.");
       return;
     }
   
-    // Clear any previous table
     table.innerHTML = '';
   
-    // Add a header with colspan
     const headerRow = table.insertRow();
     const headerCell = headerRow.insertCell(0);
     headerCell.colSpan = 3;
     headerCell.textContent = `Multiplication Table for ${number}`;
     headerCell.style.textAlign = 'center';
-    headerCell.style.fontWeight = 'bold';
-    headerCell.style.backgroundColor = '#007bff';
-    headerCell.style.color = 'white';
   
-    // Add column headers
     const columnRow = table.insertRow();
-    const column1 = columnRow.insertCell(0);
-    const column2 = columnRow.insertCell(1);
-    const column3 = columnRow.insertCell(2);
+    columnRow.innerHTML = `
+      <th>Number</th>
+      <th>Multiplier</th>
+      <th>Result</th>
+    `;
   
-    column1.textContent = "Number";
-    column2.textContent = "Multiplier";
-    column3.textContent = "Result";
-  
-    // Generate table rows
     for (let i = 1; i <= range; i++) {
       const row = table.insertRow();
-      const cell1 = row.insertCell(0);
-      const cell2 = row.insertCell(1);
-      const cell3 = row.insertCell(2);
-  
-      cell1.textContent = number;
-      cell2.textContent = i;
-      cell3.textContent = number * i;
+      row.innerHTML = `
+        <td>${number}</td>
+        <td>${i}</td>
+        <td>${number * i}</td>
+      `;
     }
   });
   
   // Clear Table
   document.getElementById('clear-btn').addEventListener('click', () => {
-    const table = document.getElementById('multiplication-table');
-    table.innerHTML = ''; // Clear the table content
+    document.getElementById('multiplication-table').innerHTML = '';
   });
   
   // Download as CSV
@@ -73,5 +60,17 @@ document.getElementById('generate-btn').addEventListener('click', () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  });
+  
+  // Update range value dynamically
+  const rangeInput = document.getElementById('range');
+  const rangeValueDisplay = document.getElementById('range-value');
+  rangeInput.addEventListener('input', () => {
+    rangeValueDisplay.textContent = rangeInput.value;
+  });
+  
+  // Theme Toggle
+  document.getElementById('theme-toggle-btn').addEventListener('click', () => {
+    document.body.classList.toggle('dark-theme');
   });
   

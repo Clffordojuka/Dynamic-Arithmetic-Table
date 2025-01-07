@@ -8,6 +8,10 @@ body {
     min-height: 100vh;
     background-color: #acace7;
   }
+  .dark-theme {
+    background-color: #333;
+    color: #f4f4f9;
+  }
   
   .container {
     text-align: center;
@@ -73,6 +77,19 @@ button {
   .table th {
     background-color: #007bff;
     color: white;
+  }
+
+.dark-theme .table th {
+    background-color: #555;
+    color: #f4f4f9;
+  }
+  
+.dark-theme .table th {
+    background-color: #555;
+    color: #f4f4f9;
+  }
+  .dark-theme button:hover {
+    background-color: #777;
   }
   
   .table td[colspan="3"] {
