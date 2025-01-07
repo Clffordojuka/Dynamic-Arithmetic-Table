@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Multiplication Table</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Multiplication Table Generator</h1>
+    <form id="table-form">
+      <label for="number">Enter Number:</label>
+      <input type="number" id="number" placeholder="Enter a number" required>
+
+      <label for="range">Enter Range:</label>
+      <input type="number" id="range" placeholder="Enter range (e.g., 10)" required>
+
+      <button type="button" id="generate-btn">Generate Table</button>
+      <button type="button" id="clear-btn">Clear Table</button>
+      <button type="button" id="download-btn">Download as CSV</button>
+    </form>
+
+    <table id="multiplication-table" class="table"></table>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
