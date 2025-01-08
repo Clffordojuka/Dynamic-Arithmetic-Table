@@ -44,6 +44,31 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+select {
+    width: 100%;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    background-color: #f9f9f9; 
+    font-size: 16px; 
+    color: #333; 
+    cursor: pointer; 
+    appearance: none; 
+  }
+  select:hover {
+    border-color: #007BFF; 
+  }
+  option {
+    padding: 8px; 
+    font-size: 16px; 
+    background-color: #fff; 
+    color: #333; 
+    cursor: pointer; 
+  }
+  option:hover {
+    background-color: #007BFF; 
+    color: #fff; 
+  }
   
 button {
     padding: 10px 20px;
@@ -100,8 +125,7 @@ button {
     background-color: #007bff;
     color: white;
   }
-
-  /* Add these to your existing CSS file */
+  
 @keyframes fadeIn {
     from {
         opacity: 0;

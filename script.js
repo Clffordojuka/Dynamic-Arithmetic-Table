@@ -2,35 +2,54 @@
 document.getElementById('generate-btn').addEventListener('click', () => {
     const number = parseInt(document.getElementById('number').value);
     const range = parseInt(document.getElementById('range').value);
-    const table = document.getElementById('multiplication-table');
+    const operation = document.getElementById('operation').value;
+    const table = document.getElementById('generator-table');
   
     if (isNaN(number) || range <= 0) {
-      alert("Please enter a valid number.");
+      alert("Please enter a valid number and range.");
       return;
     }
   
+    // Clear previous table content
     table.innerHTML = '';
   
+    // Add table header
     const headerRow = table.insertRow();
     const headerCell = headerRow.insertCell(0);
     headerCell.colSpan = 3;
-    headerCell.textContent = `Multiplication Table for ${number}`;
+    headerCell.textContent = `${operation.charAt(0).toUpperCase() + operation.slice(1)} Table for ${number}`;
     headerCell.style.textAlign = 'center';
   
+    // Add column labels
     const columnRow = table.insertRow();
     columnRow.innerHTML = `
       <th>Number</th>
-      <th>Multiplier</th>
+      <th>Operand</th>
       <th>Result</th>
     `;
   
+    // Populate table with rows
     for (let i = 1; i <= range; i++) {
       const row = table.insertRow();
-      row.innerHTML = `
-        <td>${number}</td>
-        <td>${i}</td>
-        <td>${number * i}</td>
-      `;
+      row.classList.add('table-row'); // Add animation class
+  
+      let result;
+      switch (operation) {
+        case 'multiplication':
+          result = number * i;
+          break;
+        case 'addition':
+          result = number + i;
+          break;
+        case 'subtraction':
+          result = number - i;
+          break;
+        case 'division':
+          result = i !== 0 ? (number / i).toFixed(2) : 'Infinity'; // Handle division by zero
+          break;
+      }
+  
+      row.innerHTML = `<td>${number}</td><td>${i}</td><td>${result}</td>`;
     }
   });
   
@@ -56,17 +75,15 @@ document.getElementById('generate-btn').addEventListener('click', () => {
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "multiplication_table.csv");
+    link.setAttribute("download", "table.csv");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   });
   
-  // Update range value dynamically
-  const rangeInput = document.getElementById('range');
-  const rangeValueDisplay = document.getElementById('range-value');
-  rangeInput.addEventListener('input', () => {
-    rangeValueDisplay.textContent = rangeInput.value;
+  // Update Range Value Dynamically
+  document.getElementById('range').addEventListener('input', (event) => {
+    document.getElementById('range-value').textContent = event.target.value;
   });
   
   // Theme Toggle
