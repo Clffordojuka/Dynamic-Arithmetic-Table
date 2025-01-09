@@ -4,6 +4,7 @@ document.getElementById('generate-btn').addEventListener('click', () => {
     const range = parseInt(document.getElementById('range').value);
     const operation = document.getElementById('operation').value;
     const table = document.getElementById('generator-table');
+    const button = document.getElementById('clear-btn');
   
     if (isNaN(number) || range <= 0) {
       alert("Please enter a valid number and range.");
@@ -55,12 +56,12 @@ document.getElementById('generate-btn').addEventListener('click', () => {
   
   // Clear Table
   document.getElementById('clear-btn').addEventListener('click', () => {
-    document.getElementById('multiplication-table').innerHTML = '';
+    document.getElementById('generator-table').innerHTML = '';
   });
   
   // Download as CSV
   document.getElementById('download-btn').addEventListener('click', () => {
-    const table = document.getElementById('multiplication-table');
+    const table = document.getElementById('generator-table');
     if (table.rows.length === 0) {
       alert("No table to download. Please generate a table first.");
       return;
